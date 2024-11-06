@@ -54,7 +54,7 @@ LLaVA/*.json
 LLaVA/*.jsonl
 
 # Data
-!**/alpaca-data-conversation.json
+# !**/alpaca-data-conversation.json
 
 # Editor
 .idea
@@ -72,7 +72,7 @@ LLaVA/.ipynb_checkpoints
 LLaVA/*.ipynb
 
 # DevContainer
-!.devcontainer/*
+LLaVA/.devcontainer/*
 
 # Demo
 LLaVA/serve_images/
