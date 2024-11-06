@@ -44,7 +44,7 @@ for scale in "${scales[@]}"
 do
 for skip in "${skips[@]}"
 do
-cmd="python vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
+cmd="HUGGINGFACE_HUB_CACHE=${base_folder}hub python vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
  --sample-dir runs/exps/seed${seed}/lvm_sd_negp_wkwn_skip${skip}/ --cfg-scale ${scale} --lvm-guidance --skip ${skip} --seed ${seed} --prompt_process 0"
 echo ${cmd}
 eval ${cmd}
