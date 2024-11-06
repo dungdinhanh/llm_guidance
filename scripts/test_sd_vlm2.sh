@@ -30,13 +30,13 @@ scales=( "1.5"  )
 #  do
 for scale in "${scales[@]}"
 do
-cmd="WORLD_SIZE=1 RANK=0 MASTER_IP=127.0.0.1 MASTER_PORT=29510 MARSV2_WHOLE_LIFE_STATE=0 python stable_diffusion_test.py $MODEL_FLAGS  $SAMPLE_FLAGS \
+cmd="python vlm_sd_shard.py  $MODEL_FLAGS  $SAMPLE_FLAGS \
  --sample-dir runs/sd_test/"
 echo ${cmd}
 eval ${cmd}
 done
 #done
-
+# seed=42 device=lab2.0
 ##
 #for scale in "${scales[@]}"
 #do

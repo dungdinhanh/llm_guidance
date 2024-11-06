@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export NCCL_P2P_DISABLE=1
 
 
 MODEL_FLAGS=""
@@ -30,8 +30,7 @@ scales=( "1.5"  )
 #  do
 for scale in "${scales[@]}"
 do
-cmd="WORLD_SIZE=1 RANK=0 MASTER_IP=127.0.0.1 MASTER_PORT=29510 MARSV2_WHOLE_LIFE_STATE=0 python stable_diffusion_test.py $MODEL_FLAGS  $SAMPLE_FLAGS \
- --sample-dir runs/sd_test/"
+cmd="WORLD_SIZE=1 RANK=0 MASTER_IP=127.0.0.1 MASTER_PORT=29510 MARSV2_WHOLE_LIFE_STATE=0 python vlm_test3.py"
 echo ${cmd}
 eval ${cmd}
 done

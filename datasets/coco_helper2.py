@@ -208,6 +208,19 @@ def load_data_caption_hfai(
     while True:
         yield from loader  # put all items of loader into list and concat all list infinitely
 
+def load_data_caption_hfai_one_process(
+        *,
+        split: str,
+        batch_size: int,
+):
+    dataset = CocoCaptiononlyNCI(split)
+
+    # data_sampler = DistributedSampler(dataset, shuffle=True)
+    loader = dataset.loader(batch_size, num_workers=8, pin_memory=True, drop_last=True)
+
+    while True:
+        yield from loader  # put all items of loader into list and concat all list infinitely
+
 def load_data_caption_bb_hfai(
         *,
         split: str,
