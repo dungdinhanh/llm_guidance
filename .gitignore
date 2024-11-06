@@ -42,40 +42,6 @@ output_nci2/
 
 
 # Python
-LLaVA/__pycache__
-LLaVA/*.pyc
-LLaVA/*.egg-info
-LLaVA/dist
-
-# Log
-LLaVA/*.log
-# LLaVA/*.log.*
-LLaVA/*.json
-LLaVA/*.jsonl
-
-# Data
-# !**/alpaca-data-conversation.json
-
-# Editor
-.idea
-*.swp
-
-# Other
-LLaVA/.DS_Store
-LLaVA/wandb
-LLaVA/output
-
-LLaVA/checkpoints
-LLaVA/ckpts*
-
-LLaVA/.ipynb_checkpoints
-LLaVA/*.ipynb
-
-# DevContainer
-LLaVA/.devcontainer/*
-
-# Demo
-LLaVA/serve_images/
-
+# LLaVA/
 
 
