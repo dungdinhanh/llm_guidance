@@ -49,7 +49,7 @@ LLaVA/dist
 
 # Log
 LLaVA/*.log
-LLaVA/*.log.*
+# LLaVA/*.log.*
 LLaVA/*.json
 LLaVA/*.jsonl
 
