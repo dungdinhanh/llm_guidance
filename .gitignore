@@ -78,4 +78,7 @@ LLaVA/.devcontainer/*
 LLaVA/serve_images/
 
 
+error_nci/
+output_nci/
+
 
