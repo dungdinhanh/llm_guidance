@@ -1,0 +1,14 @@
+Loading python3/3.9.2
+  Loading requirement: intel-mkl/2020.3.304
+Loading sd22
+  Loading requirement: cuda/11.4.1 cudnn/8.2.2-cuda11.4 nccl/2.10.3-cuda11.4
+    openmpi/4.1.2 magma/2.6.0 fftw3/3.3.8
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/setuptools/distutils_patch.py:25: UserWarning: Distutils was imported before Setuptools. This usage is discouraged and may exhibit undesirable behaviors or errors. Please use Setuptools' objects directly or at least import Setuptools first.
+  warnings.warn(
+2024-11-07 14:26:21.352364: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Traceback (most recent call last):
+  File "/home/562/dd9648/code/llm_guidance/vlm_sd_shard_neg_sk.py", line 10, in <module>
+    from llava.mm_utils import (
+ModuleNotFoundError: No module named 'llava'

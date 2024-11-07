@@ -1,17 +1,21 @@
 #!/bin/bash
 
 #PBS -q gpuvolta
-#PBS -P zg12
+#PBS -P jp09
 #PBS -l walltime=48:00:00
 #PBS -l mem=64GB
 #PBS -l ncpus=24
 #PBS -l ngpus=2
 #PBS -l jobfs=64GB
 #PBS -l wd
-#PBS -l storage=scratch/zg12
+#PBS -l storage=scratch/jp09
 #PBS -M adin6536@uni.sydney.edu.au
-#PBS -o output_nci/compt64_clsfree_log2.txt
-#PBS -e output_nci/compt64_clsfree_error2.txt
+#PBS -o output_nci/run_vlm_sd_shard_neg_skip5.txt
+#PBS -e error_nci/errors.txt
+
+module load use.own
+module load python3/3.9.2
+module load sd22
 
 MODEL_FLAGS=""
 
@@ -23,8 +27,9 @@ SAMPLE_FLAGS="--per-proc-batch-size 10  --num-fid-samples 30000 --fix_seed"
 cmd="cd ../"
 #echo ${cmd}
 #eval ${cmd}
+base_folder="/scartch/jp09/dd9648/LVMguidance/"
+hub_folder="/scratch/jp09/dd9648/hub"
 
-base_folder="/scratch/jp09/Sta"
 
 cmd="ls"
 echo ${cmd}
@@ -55,7 +60,7 @@ for scale in "${scales[@]}"
 do
 for skip in "${skips[@]}"
 do
-cmd="HUGGINGFACE_HUB_CACHE=${base_folder}hub python vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
+cmd="HUGGINGFACE_HUB_CACHE=${hub_folder} HFAI_DATSETS_DIR=/scratch/jp09/dd9648/data/ python3 vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
  --sample-dir runs/exps/seed${seed}/lvm_sd_negp_wkwn_skip${skip}/ --cfg-scale ${scale} --lvm-guidance --skip ${skip} --seed ${seed} --prompt_process 0"
 echo ${cmd}
 eval ${cmd}
