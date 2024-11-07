@@ -1,6 +1,6 @@
 diffusers
 transformers
-accelerate==0.28.0
+accelerate==1.1.1
 scipy
 safetensors
 pandas
