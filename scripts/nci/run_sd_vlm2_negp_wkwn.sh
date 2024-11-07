@@ -3,10 +3,10 @@
 #PBS -q gpuvolta
 #PBS -P jp09
 #PBS -l walltime=48:00:00
-#PBS -l mem=64GB
+#PBS -l mem=256GB
 #PBS -l ncpus=24
 #PBS -l ngpus=2
-#PBS -l jobfs=64GB
+#PBS -l jobfs=256GB
 #PBS -l wd
 #PBS -l storage=scratch/jp09
 #PBS -M adin6536@uni.sydney.edu.au
@@ -27,7 +27,7 @@ SAMPLE_FLAGS="--per-proc-batch-size 10  --num-fid-samples 30000 --fix_seed"
 cmd="cd ../"
 #echo ${cmd}
 #eval ${cmd}
-base_folder="/scartch/jp09/dd9648/LVMguidance/"
+base_folder="/scratch/jp09/dd9648/LVMguidance/"
 hub_folder="/scratch/jp09/dd9648/hub"
 
 
@@ -61,7 +61,7 @@ do
 for skip in "${skips[@]}"
 do
 cmd="HUGGINGFACE_HUB_CACHE=${hub_folder} HFAI_DATSETS_DIR=/scratch/jp09/dd9648/data/ python3 vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
- --sample-dir runs/exps/seed${seed}/lvm_sd_negp_wkwn_skip${skip}/ --cfg-scale ${scale} --lvm-guidance --skip ${skip} --seed ${seed} --prompt_process 0"
+ --sample-dir runs/exps/seed${seed}/lvm_sd_negp_wkwn_skip${skip}/ --cfg-scale ${scale} --lvm-guidance --skip ${skip} --seed ${seed} --prompt_process 0 &>> temp.txt"
 echo ${cmd}
 eval ${cmd}
 done

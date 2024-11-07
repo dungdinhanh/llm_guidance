@@ -135,7 +135,7 @@ def main():
     # setup pipe
     cache_hub_folder = os.path.join(base_folder, "hub")
     os.makedirs(cache_hub_folder, exist_ok=True)
-    pipe = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", cache_dir=cache_hub_folder, device_map="balanced")
+    pipe = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
     # StableDiffusionLVMPipeline.scheduler.__class__ = PNDMSchedulerExt
     # pipe = pipe.to(accelerator.process_index)
 
