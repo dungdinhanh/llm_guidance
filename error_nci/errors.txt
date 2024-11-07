@@ -1,25 +1,0 @@
-Loading python3/3.9.2
-  Loading requirement: intel-mkl/2020.3.304
-Loading sd22
-  Loading requirement: cuda/11.4.1 cudnn/8.2.2-cuda11.4 nccl/2.10.3-cuda11.4
-    openmpi/4.1.2 magma/2.6.0 fftw3/3.3.8
-2024-11-07 15:48:43.497397: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-Couldn't connect to the Hub: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/CompVis/stable-diffusion-v1-4 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1514d0a01730>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: fc6bae5e-cc10-4ec7-bd48-315eb85b0f86)').
-Will try to load from local cache.
-Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
-Traceback (most recent call last):
-  File "/home/562/dd9648/code/llm_guidance/vlm_sd_shard_neg_sk.py", line 343, in <module>
-    main()
-  File "/home/562/dd9648/code/llm_guidance/vlm_sd_shard_neg_sk.py", line 138, in main
-    pipe = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
-  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
-    return fn(*args, **kwargs)
-  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/diffusers/pipelines/pipeline_utils.py", line 896, in from_pretrained
-    loaded_sub_model = load_sub_model(
-  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/diffusers/pipelines/pipeline_loading_utils.py", line 704, in load_sub_model
-    loaded_sub_model = load_method(os.path.join(cached_folder, name), **loading_kwargs)
-  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
-    return fn(*args, **kwargs)
-  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/diffusers/models/modeling_utils.py", line 886, in from_pretrained
-    accelerate.load_checkpoint_and_dispatch(
-TypeError: load_checkpoint_and_dispatch() got an unexpected keyword argument 'strict'
