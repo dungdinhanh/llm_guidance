@@ -24,7 +24,7 @@ cmd="cd ../"
 #echo ${cmd}
 #eval ${cmd}
 
-base_folder="/hdd/dungda/lvm-guidance/"
+base_folder="/scratch/jp09/Sta"
 
 cmd="ls"
 echo ${cmd}

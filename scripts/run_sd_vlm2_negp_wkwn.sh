@@ -1,17 +1,5 @@
 #!/bin/bash
 
-#PBS -q gpuvolta
-#PBS -P zg12
-#PBS -l walltime=48:00:00
-#PBS -l mem=64GB
-#PBS -l ncpus=24
-#PBS -l ngpus=2
-#PBS -l jobfs=64GB
-#PBS -l wd
-#PBS -l storage=scratch/zg12
-#PBS -M adin6536@uni.sydney.edu.au
-#PBS -o output_nci/compt64_clsfree_log2.txt
-#PBS -e output_nci/compt64_clsfree_error2.txt
 
 
 MODEL_FLAGS=""
