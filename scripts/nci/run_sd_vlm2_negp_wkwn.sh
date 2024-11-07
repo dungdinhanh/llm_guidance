@@ -13,7 +13,6 @@
 #PBS -o output_nci/compt64_clsfree_log2.txt
 #PBS -e output_nci/compt64_clsfree_error2.txt
 
-
 MODEL_FLAGS=""
 
 #SAMPLE_FLAGS="--per-proc-batch-size 1 --num-fid-samples 30000"
