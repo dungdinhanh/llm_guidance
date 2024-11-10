@@ -141,7 +141,10 @@ class ConversationDiffusion:
             processed_prompt = f"{DEFAULT_IMAGE_TOKEN} \n Given prompt \"{prompt}\", which objects or details are lacked or spoiled in the image? Keyword only, no sentence or phrase"
         elif self.process_prompt_mode == RDTP:
             # processed_prompt = f"{DEFAULT_IMAGE_TOKEN} \n Given prompt \"{prompt}\", replace the prompt with exact the meaning of the given prompt with emphasizing more on the details in the original prompt but missed in the image"
-            processed_prompt = f"{DEFAULT_IMAGE_TOKEN} \n Given prompt \"{prompt}\", Adding details to prompt on how to improve the details in the image with short phrases only, no sentence."
+            # processed_prompt = f"{DEFAULT_IMAGE_TOKEN} \n Given prompt \"{prompt}\", Adding details to prompt on how to improve the details in the image with short phrases only, no sentence."
+            # processed_prompt = f"Given prompt \"{prompt}\" and corresponding generated image {DEFAULT_IMAGE_TOKEN}, use another prompt to improve generated image's details and match with original given prompt"
+            # processed_prompt = f"Given prompt \"{prompt}\" and corresponding generated image {DEFAULT_IMAGE_TOKEN}, use another prompt with different words but have the exact meaning with original prompt to improve generated image's details"
+            processed_prompt = f"Given prompt \"{prompt}\" and corresponding generated image {DEFAULT_IMAGE_TOKEN}, use a different prompt the exact meaning with original prompt to improve generated image's details with short phrases within 77 words"
         else:
             processed_prompt = prompt
             warnings.warn(f"Current {self.process_prompt_mode} is not supported, the prompt will be kept the same")

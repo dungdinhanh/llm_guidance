@@ -24,4 +24,6 @@ pip install tensorflow-gpu==2.9.2
 
 python -m pip install pycocotools
 
+pip install git+https://github.com/openai/CLIP.git
+
 # pip install hfai[full] --extra-index-url https://pypi.hfai.high-flyer.cn/simple --trusted-host pypi.hfai.high-flyer.cn
