@@ -49,6 +49,7 @@ def main():
 
 
     caption_loader = load_data_caption_hfai_one_process(split="val", batch_size=1)
+    caption_loader = [["The passenger train is painted brown and white."]]
     caption_iter = iter(caption_loader)
 
     pipe = StableDiffusionXLLVMPipeline.from_pretrained(base_model_id, torch_dtype=torch.float16, variant="fp16", device_map="balanced")
