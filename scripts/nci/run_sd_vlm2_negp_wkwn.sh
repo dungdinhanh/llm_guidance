@@ -20,7 +20,7 @@ module load sd22
 MODEL_FLAGS=""
 
 #SAMPLE_FLAGS="--per-proc-batch-size 1 --num-fid-samples 30000"
-SAMPLE_FLAGS="--per-proc-batch-size 10  --num-fid-samples 30000 --fix_seed"
+SAMPLE_FLAGS="--per-proc-batch-size 10  --num-fid-samples 30000 "
 #SAMPLE_FLAGS="--batch_size 2 --num_samples 30000 --timestep_respacing 250"
 
 
@@ -60,7 +60,7 @@ for scale in "${scales[@]}"
 do
 for skip in "${skips[@]}"
 do
-cmd="HUGGINGFACE_HUB_CACHE=${hub_folder} HFAI_DATSETS_DIR=/scratch/jp09/dd9648/data/ python3 vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
+cmd="HUGGINGFACE_HUB_CACHE=${hub_folder} HFAI_DATASETS_DIR=/scratch/jp09/dd9648/data/ python3 vlm_sd_shard_neg_sk.py  $MODEL_FLAGS  $SAMPLE_FLAGS --base_folder ${base_folder} \
  --sample-dir runs/exps/seed${seed}/lvm_sd_negp_wkwn_skip${skip}/ --cfg-scale ${scale} --lvm-guidance --skip ${skip} --seed ${seed} --prompt_process 0 &>> temp.txt"
 echo ${cmd}
 eval ${cmd}
