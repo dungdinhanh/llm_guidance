@@ -23,3 +23,121 @@ Traceback (most recent call last):
   File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/diffusers/models/modeling_utils.py", line 886, in from_pretrained
     accelerate.load_checkpoint_and_dispatch(
 TypeError: load_checkpoint_and_dispatch() got an unexpected keyword argument 'strict'
+2024-11-07 16:21:53.490787: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Couldn't connect to the Hub: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/CompVis/stable-diffusion-v1-4 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x147a8f1c57f0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 41c29f22-13b5-4d59-a948-0e38cd11b504)').
+Will try to load from local cache.
+Saving .png samples at /scratch/jp09/dd9648/LVMguidance/runs/exps/seed134/lvm_sd_negp_wkwn_skip5/images and .txt prompt at /scratch/jp09/dd9648/LVMguidance/runs/exps/seed134/lvm_sd_negp_wkwn_skip5/prompts
+Saving final samples and text in /scratch/jp09/dd9648/LVMguidance/runs/exps/seed134/lvm_sd_negp_wkwn_skip5/reference
+continue sampling
+Already sampled 0
+Total number of images that will be sampled: 30000
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Taking `'Attention' object has no attribute 'key'` while using `accelerate.load_checkpoint_and_dispatch` to mean /scratch/jp09/dd9648/hub/models--CompVis--stable-diffusion-v1-4/snapshots/133a221b8aa7292a167afc5127cb63fb5005638b/vae was saved with deprecated attention block weight names. We will load it with the deprecated attention block names and convert them on the fly to the new attention block format. Please re-save the model after this conversion, so we don't have to do the on the fly renaming in the future. If the model is from a hub checkpoint, please also re-upload it or open a PR on the original repository.
+Loading pipeline components...:  29%|██▊       | 2/7 [00:01<00:02,  1.81it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:08<00:06,  2.29s/it]Loading pipeline components...:  71%|███████▏  | 5/7 [00:13<00:06,  3.06s/it]Loading pipeline components...:  86%|████████▌ | 6/7 [00:15<00:02,  2.87s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:15<00:00,  2.21s/it]
+/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+You are using a model of type llava to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+Init correctly
+Traceback (most recent call last):
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connectionpool.py", line 1061, in _validate_conn
+    conn.connect()
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x147a72732340>: Failed to establish a new connection: [Errno 101] Network is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/clip-vit-large-patch14-336/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x147a72732340>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 1376, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 1296, in get_hf_file_metadata
+    r = _request_wrapper(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 277, in _request_wrapper
+    response = _request_wrapper(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 300, in _request_wrapper
+    response = get_session().request(method=method, url=url, **params)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/utils/_http.py", line 93, in send
+    return super().send(request, *args, **kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /openai/clip-vit-large-patch14-336/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x147a72732340>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 524d3a24-193c-4bbd-ad77-8dff3ecbf24f)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/transformers/utils/hub.py", line 385, in cached_file
+    resolved_file = hf_hub_download(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 969, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 1487, in _raise_on_head_call_error
+    raise LocalEntryNotFoundError(
+huggingface_hub.errors.LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/562/dd9648/code/llm_guidance/vlm_sd_shard_neg_sk.py", line 343, in <module>
+    main()
+  File "/home/562/dd9648/code/llm_guidance/vlm_sd_shard_neg_sk.py", line 148, in main
+    tokenizer, model, image_processor, context_len = load_pretrained_model(
+  File "/home/562/dd9648/code/llm_guidance/utils/llava_utils.py", line 131, in load_pretrained_model
+    model = LlavaLlamaForCausalLM.from_pretrained(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/transformers/modeling_utils.py", line 3594, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+  File "/home/562/dd9648/code/llm_guidance/LLaVA/llava/model/language_model/llava_llama.py", line 46, in __init__
+    self.model = LlavaLlamaModel(config)
+  File "/home/562/dd9648/code/llm_guidance/LLaVA/llava/model/language_model/llava_llama.py", line 38, in __init__
+    super(LlavaLlamaModel, self).__init__(config)
+  File "/home/562/dd9648/code/llm_guidance/LLaVA/llava/model/llava_arch.py", line 35, in __init__
+    self.vision_tower = build_vision_tower(config, delay_load=True)
+  File "/home/562/dd9648/code/llm_guidance/LLaVA/llava/model/multimodal_encoder/builder.py", line 13, in build_vision_tower
+    return CLIPVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/562/dd9648/code/llm_guidance/LLaVA/llava/model/multimodal_encoder/clip_encoder.py", line 22, in __init__
+    self.cfg_only = CLIPVisionConfig.from_pretrained(self.vision_tower_name)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/transformers/models/clip/configuration_clip.py", line 251, in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/transformers/configuration_utils.py", line 634, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/transformers/configuration_utils.py", line 689, in _get_config_dict
+    resolved_config_file = cached_file(
+  File "/scratch/jp09/dd9648/sd22/lib/python3.9/site-packages/transformers/utils/hub.py", line 425, in cached_file
+    raise EnvironmentError(
+OSError: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like openai/clip-vit-large-patch14-336 is not the path to a directory containing a file named config.json.
+Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
