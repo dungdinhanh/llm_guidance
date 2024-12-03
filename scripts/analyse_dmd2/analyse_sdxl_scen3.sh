@@ -4,7 +4,7 @@ hub_folder="/hdd/dungda/hub/"
 base_folder="./"
 seeds=("134")
 seeds=("134" "135" "136" "137" "138" "139" "140" "141" "142" "143")
-seeds=("136")
+seeds=("134")
 
 # for seed in "${seeds[@]}"
 # do
@@ -21,7 +21,7 @@ seeds=("136")
 
  for seed in "${seeds[@]}"
 do
- cmd="HUGGINGFACE_HUB_CACHE=${hub_folder} HFAI_DATASETS_DIR=/hdd/datasets/ python analyse_vlm_dmd2_shard.py --sample-dir runs/dmd2_analyse_failurecases_simple1/case4/seed${seed}/fail/largelvm_dmd2_nolvm/ \
+ cmd="HUGGINGFACE_HUB_CACHE=${hub_folder} HFAI_DATASETS_DIR=/hdd/datasets/ python analyse_vlm_sdxl_shard.py --sample-dir runs/sdxl_analyse_failurecases_simple1/case1/seed${seed}/fail/largelvm_dmd2_nolvm/ \
  --model_path liuhaotian/llava-v1.5-13b --seed ${seed} --fix_seed --base_folder ${base_folder}"
  echo ${cmd}
  eval ${cmd}

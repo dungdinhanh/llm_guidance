@@ -47,9 +47,26 @@ def main():
     os.makedirs(prompt_folder_dir, exist_ok=True)
     os.makedirs(analysis_folder_dir, exist_ok=True)
 
+    # scenario 1: simple text
+    # caption_loader = load_data_caption_hfai_one_process(split="val", batch_size=1)
+    # caption_loader = [["A plate of spaghetti with red sauce and broccoli."]] # seed 140 -> wrong dish
+    # caption_loader = [["Spaghetti with red sauce and broccoli on a plate"]]
+    # caption_loader = [["Two men who are standing in the grass near a soccer ball."]] # seed 134 -> fix: 
+    # caption_loader = [["A soccer ball is near to two standing men in the grass"]] 
+    # caption_loader = [["In a living room, a cat and a dog sleeping on the floor"]] # bad for 136 
+    # # -> fix:  
+    # # caption_loader = [["a cat and a dog sleeping on the floor in a living room"]] # -> quite oke / poorer: # 
+    # caption_loader = [["A living room scene with a dog and a cat sleeping on the floor."]]
+    # caption_loader = [["Two computer monitors are on the desk with a chair at the desk"]] # bad for 136 #=> quite oke 
+    # caption_loader = [["A computer chair at the desk with two computer monitors."]]
+    
+    # scenario 2: complicated text
+    # caption_loader = [["A bustling, futuristic cityscape at sunset, where skyscrapers blend into giant, ancient trees; digital billboards flicker with holographic koi fish swimming across the screens, and pedestrians wear a mix of cyberpunk clothing and traditional robes, all illuminated by a soft, glowing mist"]]
+    # caption_loader = [["A cozy library with a roaring fireplace, an open book on a vintage table, a cat sleeping on a cushioned chair, and a globe in the corner."]]
+    # caption_loader = [["A medieval blacksmith’s shop with a blazing forge, metal tools hanging on the wall, a half-finished sword on the anvil, and a bucket of water nearby."]]
+    caption_loader = [["An explorer’s tent in the jungle with a canvas map pinned to a board, binoculars, a compass, field journals filled with sketches, scattered specimen jars, a backpack leaning against a cot, mosquito netting, a lantern, and boots caked in mud."]]
+    
 
-    caption_loader = load_data_caption_hfai_one_process(split="val", batch_size=1)
-    caption_loader = [["The passenger train is painted brown and white."]]
     caption_iter = iter(caption_loader)
 
     pipe = StableDiffusionXLLVMPipeline.from_pretrained(base_model_id, torch_dtype=torch.float16, variant="fp16", device_map="balanced")

@@ -1890,4 +1890,95 @@ index created!
 130
   0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:09<07:43,  9.45s/it]  4%|▍         | 2/50 [00:12<04:28,  5.60s/it]  6%|▌         | 3/50 [00:15<03:25,  4.36s/it]  8%|▊         | 4/50 [00:18<02:54,  3.78s/it] 10%|█         | 5/50 [00:28<04:41,  6.25s/it] 12%|█▏        | 6/50 [00:29<03:19,  4.54s/it] 14%|█▍        | 7/50 [00:32<02:51,  4.00s/it] 16%|█▌        | 8/50 [00:35<02:33,  3.65s/it] 18%|█▊        | 9/50 [00:38<02:20,  3.42s/it] 20%|██        | 10/50 [00:49<03:51,  5.78s/it] 22%|██▏       | 11/50 [00:50<02:50,  4.38s/it] 24%|██▍       | 12/50 [00:53<02:29,  3.93s/it] 26%|██▌       | 13/50 [00:56<02:13,  3.62s/it] 28%|██▊       | 14/50 [00:59<02:02,  3.40s/it] 30%|███       | 15/50 [01:10<03:14,  5.57s/it] 32%|███▏      | 16/50 [01:11<02:24,  4.26s/it] 34%|███▍      | 17/50 [01:14<02:07,  3.85s/it] 36%|███▌      | 18/50 [01:17<01:54,  3.57s/it] 38%|███▊      | 19/50 [01:20<01:44,  3.37s/it] 40%|████      | 20/50 [01:31<02:49,  5.65s/it] 42%|████▏     | 21/50 [01:32<02:05,  4.31s/it] 44%|████▍     | 22/50 [01:35<01:48,  3.89s/it] 46%|████▌     | 23/50 [01:38<01:37,  3.59s/it] 48%|████▊     | 24/50 [01:41<01:28,  3.39s/it] 50%|█████     | 25/50 [01:51<02:20,  5.62s/it] 52%|█████▏    | 26/50 [01:53<01:43,  4.30s/it] 54%|█████▍    | 27/50 [01:55<01:29,  3.88s/it] 56%|█████▌    | 28/50 [01:58<01:18,  3.59s/it] 58%|█████▊    | 29/50 [02:01<01:11,  3.38s/it] 60%|██████    | 30/50 [02:12<01:51,  5.60s/it] 62%|██████▏   | 31/50 [02:13<01:21,  4.28s/it] 64%|██████▍   | 32/50 [02:16<01:09,  3.87s/it] 66%|██████▌   | 33/50 [02:19<01:00,  3.58s/it] 68%|██████▊   | 34/50 [02:22<00:54,  3.38s/it] 70%|███████   | 35/50 [02:33<01:24,  5.61s/it] 72%|███████▏  | 36/50 [02:34<01:00,  4.29s/it] 74%|███████▍  | 37/50 [02:37<00:50,  3.87s/it] 76%|███████▌  | 38/50 [02:40<00:42,  3.58s/it] 78%|███████▊  | 39/50 [02:43<00:37,  3.38s/it] 80%|████████  | 40/50 [02:55<00:59,  5.94s/it] 82%|████████▏ | 41/50 [02:56<00:40,  4.52s/it] 84%|████████▍ | 42/50 [02:59<00:32,  4.03s/it] 86%|████████▌ | 43/50 [03:02<00:25,  3.69s/it] 88%|████████▊ | 44/50 [03:05<00:20,  3.46s/it] 90%|█████████ | 45/50 [03:16<00:29,  5.94s/it] 92%|█████████▏| 46/50 [03:17<00:18,  4.52s/it] 94%|█████████▍| 47/50 [03:20<00:12,  4.03s/it] 96%|█████████▌| 48/50 [03:23<00:07,  3.69s/it] 98%|█████████▊| 49/50 [03:26<00:03,  3.46s/it]100%|██████████| 50/50 [03:37<00:00,  5.77s/it]100%|██████████| 50/50 [03:37<00:00,  4.36s/it]
 140
-  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:09<07:53,  9.66s/it]  4%|▍         | 2/50 [00:12<04:32,  5.68s/it]
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:09<07:53,  9.66s/it]  4%|▍         | 2/50 [00:12<04:32,  5.68s/it]There was a problem when trying to write in your cache folder (/scratch/jp09/dd9648/hub). Please, ensure the directory exists and can be written to.
+There was a problem when trying to write in your cache folder (/scratch/jp09/dd9648/hub). You should set the environment variable TRANSFORMERS_CACHE to a writable directory.
+Traceback (most recent call last):
+  File "/home/dungda/llm_guidance/vlm_sd_shard_neg_sk.py", line 4, in <module>
+    from diffusers import UnCLIPScheduler, DDPMScheduler, StableUnCLIPPipeline, StableDiffusionPipeline
+  File "<frozen importlib._bootstrap>", line 1075, in _handle_fromlist
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 844, in __getattr__
+    value = getattr(module, name)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 844, in __getattr__
+    value = getattr(module, name)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 843, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 853, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/pipelines/stable_diffusion/pipeline_stable_unclip.py", line 24, in <module>
+    from ...models import AutoencoderKL, PriorTransformer, UNet2DConditionModel
+  File "<frozen importlib._bootstrap>", line 1075, in _handle_fromlist
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 843, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 853, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/autoencoders/__init__.py", line 1, in <module>
+    from .autoencoder_asym_kl import AsymmetricAutoencoderKL
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/autoencoders/autoencoder_asym_kl.py", line 23, in <module>
+    from .vae import DecoderOutput, DiagonalGaussianDistribution, Encoder, MaskConditionDecoder
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/autoencoders/vae.py", line 25, in <module>
+    from ..unets.unet_2d_blocks import (
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/unets/__init__.py", line 6, in <module>
+    from .unet_2d import UNet2DModel
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/unets/unet_2d.py", line 24, in <module>
+    from .unet_2d_blocks import UNetMidBlock2D, get_down_block, get_up_block
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/unets/unet_2d_blocks.py", line 36, in <module>
+    from ..transformers.dual_transformer_2d import DualTransformer2DModel
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/transformers/__init__.py", line 18, in <module>
+    from .transformer_flux import FluxTransformer2DModel
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/models/transformers/transformer_flux.py", line 24, in <module>
+    from ...loaders import FromOriginalModelMixin, PeftAdapterMixin
+  File "<frozen importlib._bootstrap>", line 1075, in _handle_fromlist
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 843, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/utils/import_utils.py", line 853, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/loaders/single_file_model.py", line 23, in <module>
+    from .single_file_utils import (
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/diffusers/loaders/single_file_utils.py", line 51, in <module>
+    from transformers import AutoImageProcessor
+  File "<frozen importlib._bootstrap>", line 1075, in _handle_fromlist
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1355, in __getattr__
+    value = getattr(module, name)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1354, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1364, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/transformers/models/auto/image_processing_auto.py", line 26, in <module>
+    from ...image_processing_utils import ImageProcessingMixin
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/transformers/image_processing_utils.py", line 28, in <module>
+    from .image_transforms import center_crop, normalize, rescale
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/transformers/image_transforms.py", line 47, in <module>
+    import tensorflow as tf
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/__init__.py", line 37, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/__init__.py", line 69, in <module>
+    from tensorflow.python.profiler import profiler
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/profiler/profiler.py", line 23, in <module>
+    from tensorflow.python.profiler.model_analyzer import advise
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/profiler/model_analyzer.py", line 29, in <module>
+    from tensorflow.python.profiler import option_builder
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/profiler/option_builder.py", line 18, in <module>
+    from tensorflow.python.profiler import tfprof_logger
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/profiler/tfprof_logger.py", line 28, in <module>
+    from tensorflow.python.profiler.internal import flops_registry  # pylint: disable=unused-import
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/profiler/internal/flops_registry.py", line 263, in <module>
+    def _arg_max_flops(graph, node):
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 2959, in __call__
+    _stats_registry.register(f, self._op_type + "," + self._statistic_type)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/site-packages/tensorflow/python/framework/registry.py", line 65, in register
+    stack = traceback.extract_stack(limit=3)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/traceback.py", line 227, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/traceback.py", line 379, in extract
+    linecache.checkcache(filename)
+  File "/home/dungda/anaconda3/envs/sd22/lib/python3.10/linecache.py", line 72, in checkcache
+    stat = os.stat(fullname)
+KeyboardInterrupt

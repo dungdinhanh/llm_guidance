@@ -1,7 +1,7 @@
 import torch
 from diffusers import StableDiffusionXLPipeline
 from diffusion.lvm_diffusion_xl import StableDiffusionXLLVMPipeline
-from diffusion.lvm_diffusion import StableDiffusionLVMPipelineUpgradedNegPSkip
+from diffusion.lvm_diffusion import StableDiffusionLVMPipelineUpgradedNegPSkipManual
 from diffusers import DiffusionPipeline, UNet2DConditionModel, LCMScheduler
 from huggingface_hub import hf_hub_download
 from safetensors.torch import load_file
@@ -53,8 +53,8 @@ def main():
 
     # caption_loader = load_data_caption_hfai_one_process(split="val", batch_size=1)
     # caption_loader = [["A man wearing glasses while standing in front of a microphone."]] # seed 135
-    # caption_loader = [["A cat sitting on a bathroom counter behind a hair dryer."]] # seed 135
-    caption_loader = [["A dog driving a car down a street past a truck."]]
+    caption_loader = [["A cat sitting on a bathroom counter behind a hair dryer."]] # seed 135
+    # caption_loader = [["A dog driving a car down a street past a truck."]]
     # caption_loader = [[""]]
     caption_iter = iter(caption_loader)
 
@@ -62,7 +62,7 @@ def main():
     # pipe.load_lora_weights(hf_hub_download(repo_name, ckpt_name))
     # pipe.fuse_lora(lora_scale=1.0)  # we might want to make the scale smaller for community models
     # pipe = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
-    pipe  = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
+    pipe  = StableDiffusionLVMPipelineUpgradedNegPSkipManual.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
 
     # pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
 

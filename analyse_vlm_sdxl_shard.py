@@ -1,7 +1,6 @@
 import torch
 from diffusers import StableDiffusionXLPipeline
 from diffusion.lvm_diffusion_xl import StableDiffusionXLLVMPipeline
-from diffusion.lvm_diffusion import StableDiffusionLVMPipelineUpgradedNegPSkip
 from diffusers import DiffusionPipeline, UNet2DConditionModel, LCMScheduler
 from huggingface_hub import hf_hub_download
 from safetensors.torch import load_file
@@ -24,13 +23,11 @@ import random
 def main():
     args = create_argparser().parse_args()
 
-    # base_model_id = "stabilityai/stable-diffusion-xl-base-1.0"
-    # repo_name = "tianweiy/DMD2"
-    # ckpt_name = "dmd2_sdxl_4step_lora_fp16.safetensors"
+    base_model_id = "stabilityai/stable-diffusion-xl-base-1.0"
+    repo_name = "tianweiy/DMD2"
+    ckpt_name = "dmd2_sdxl_4step_lora_fp16.safetensors"
     # Load model.
-    # torch.backends.cuda.matmul.allow_tf32 = args.tf32  # True: fast but may lead to some small numerical differences
-    assert torch.cuda.is_available(), "Sampling with DDP requires at least one GPU. sample.py supports CPU-only usage"
-    torch.set_grad_enabled(False)
+
     if args.fix_seed:
         torch.manual_seed(args.seed)
         torch.cuda.manual_seed(args.seed)
@@ -50,19 +47,31 @@ def main():
     os.makedirs(prompt_folder_dir, exist_ok=True)
     os.makedirs(analysis_folder_dir, exist_ok=True)
 
-
+    # scenario 1: simple text
     # caption_loader = load_data_caption_hfai_one_process(split="val", batch_size=1)
-    # caption_loader = [["A man wearing glasses while standing in front of a microphone."]] # seed 135
-    # caption_loader = [["A cat sitting on a bathroom counter behind a hair dryer."]] # seed 135
-    caption_loader = [["A dog driving a car down a street past a truck."]]
-    # caption_loader = [[""]]
+    # caption_loader = [["A plate of spaghetti with red sauce and broccoli."]] # seed 140 -> wrong dish
+    # caption_loader = [["Spaghetti with red sauce and broccoli on a plate"]]
+    # caption_loader = [["Two men who are standing in the grass near a soccer ball."]] # seed 134 -> fix: 
+    # caption_loader = [["A soccer ball is near to two standing men in the grass"]] 
+    # caption_loader = [["In a living room, a cat and a dog sleeping on the floor"]] # bad for 136 
+    # # -> fix:  
+    # # caption_loader = [["a cat and a dog sleeping on the floor in a living room"]] # -> quite oke / poorer: # 
+    # caption_loader = [["A living room scene with a dog and a cat sleeping on the floor."]]
+    # caption_loader = [["Two computer monitors are on the desk with a chair at the desk"]] # bad for 136 #=> quite oke 
+    # caption_loader = [["A computer chair at the desk with two computer monitors."]]
+    
+    # scenario 2: complicated text
+    # caption_loader = [["A bustling, futuristic cityscape at sunset, where skyscrapers blend into giant, ancient trees; digital billboards flicker with holographic koi fish swimming across the screens, and pedestrians wear a mix of cyberpunk clothing and traditional robes, all illuminated by a soft, glowing mist"]]
+    # caption_loader = [["A cozy library with a roaring fireplace, an open book on a vintage table, a cat sleeping on a cushioned chair, and a globe in the corner."]]
+    # caption_loader = [["A medieval blacksmith’s shop with a blazing forge, metal tools hanging on the wall, a half-finished sword on the anvil, and a bucket of water nearby."]]
+    caption_loader = [["several dogs behind a crate with hay on the ground"]]
+    
+
     caption_iter = iter(caption_loader)
 
-    # pipe = StableDiffusionXLLVMPipeline.from_pretrained(base_model_id, torch_dtype=torch.float16, variant="fp16", device_map="balanced")
+    pipe = StableDiffusionXLLVMPipeline.from_pretrained(base_model_id, torch_dtype=torch.float16, variant="fp16", device_map="balanced")
     # pipe.load_lora_weights(hf_hub_download(repo_name, ckpt_name))
     # pipe.fuse_lora(lora_scale=1.0)  # we might want to make the scale smaller for community models
-    # pipe = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
-    pipe  = StableDiffusionLVMPipelineUpgradedNegPSkip.from_pretrained("CompVis/stable-diffusion-v1-4", device_map="balanced")
 
     # pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
 
@@ -73,15 +82,14 @@ def main():
         model_path, None, model_name, device_map="auto"
     )
 
-    process_prompt_mode = WKWN
+    process_prompt_mode = RDTP
 
     prompt=next(caption_iter)
 
     # LCMScheduler's default timesteps are different from the one we used for training 
-    images=pipe(prompt=prompt, guidance_scale=args.cfg_scale,
-                lvm_tokenizer=tokenizer, lvm_model=model, lvm_image_processor=image_processor,  
-                do_lvm_guidance=args.lvm_guidance, process_prompt_mode=process_prompt_mode, 
-                analysis_folder = analysis_folder_dir, track_image_prompt=True, skip=1).images
+    images=pipe(prompt=prompt, lvm_tokenizer=tokenizer, lvm_model=model, lvm_image_processor=image_processor,  
+                            do_lvm_guidance=args.lvm_guidance, process_prompt_mode=process_prompt_mode, 
+                            analysis_folder = analysis_folder_dir, track_image_prompt=True, skip=1).images
     
     for i in range(len(images)):
         image_file = os.path.join(sample_folder_dir, f"final_image{i}.png")
@@ -99,7 +107,6 @@ def create_argparser():
     parser.add_argument("--seed", type=int, default=123)
     parser.add_argument("--fix_seed", action="store_true")
     parser.add_argument("--base_folder", type=str, default="./")
-    parser.add_argument("--cfg_scale", type=float, default=7.5)
     return parser
 
 

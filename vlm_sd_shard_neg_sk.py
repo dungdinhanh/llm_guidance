@@ -165,7 +165,8 @@ def main():
             prompts = next(caption_iter)
         # print(prompts)
         # with accelerator.split_between_processes(prompts) as new_prompts:
-        samples = pipe(prompt=prompts, guidance_scale=args.cfg_scale, skip=args.skip, lvm_tokenizer=tokenizer, lvm_model=model, lvm_image_processor=image_processor,  do_lvm_guidance=args.lvm_guidance, process_prompt_mode=process_prompt_mode).images
+        samples = pipe(prompt=prompts, guidance_scale=args.cfg_scale, skip=args.skip, lvm_tokenizer=tokenizer, 
+                       lvm_model=model, lvm_image_processor=image_processor,  do_lvm_guidance=args.lvm_guidance, process_prompt_mode=process_prompt_mode).images
 
         for i, sample in enumerate(samples):
             index = i  + total
